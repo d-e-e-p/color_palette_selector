@@ -1,0 +1,54 @@
+
+/* gen using https://grid.layoutit.com/ */
+
+main {  
+  width: 98vw;
+  height: 98vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 1vw 1vh;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "tl tl tr tr tr tr"
+    "bl bl bl br br br";
+  border: 1vw solid red;
+}
+
+section {
+  border: 1vw solid blue;
+  object-fit: fill;
+  width: 100%;
+  max-height: 100%;
+}
+
+section > img {
+  object-fit: fill;
+  width: 100%;
+  max-height: 100%;
+}
+
+section > iframe {
+  object-fit: fill;
+  height: 40vh;
+  position: absolute;
+  display:block;
+  border: 1vw dotted yellow;
+}
+
+
+
+.tl { grid-area: tl; }
+.tr { grid-area: tr; }
+.bl { grid-area: bl; }
+.br { grid-area: br; }
+
+/*
+  width: calc(25vw);
+ *
+ */
+
+
+
+

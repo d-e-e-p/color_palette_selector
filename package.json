@@ -1,0 +1,33 @@
+{
+  "name": "color_palette_selector",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": "",
+  "license": "",
+  "author": "",
+  "scripts": {
+    "dev":   "parcel serve index.html",
+    "watch": "parcel watch index.html",
+    "build": "parcel build index.html",
+    "start": "npm run build && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.2.0",
+    "@parcel/transformer-webmanifest": "^2.2.0",
+    "husky": "^7.0.4",
+    "parcel": ">=2.0.0"
+  },
+  "dependencies": {
+    "@parcel/monorepo": "github:parcel-bundler/parcel"
+  },
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "assets",
+        "staticOutDir": "assets"
+      }
+    ]
+  }
+}

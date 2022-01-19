@@ -1,0 +1,175 @@
+
+
+:root {
+  --dark-bg: rgba(15, 15, 15, 0.95);
+  --spacing: 350px;
+
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
+{
+    margin: 10px 10px 0px 0px;
+    padding:0px 0px 0px 0px;
+}
+h2.free
+{
+    display: table;
+    margin: 10px 10px 0px 10px;
+    padding:0px 5px 0px 5px;
+    color:rgb(60,60,60);
+    background-color:rgb(185,185,185);
+}
+
+
+main {
+  width: 100vw;
+  border: 5px solid red;  /* for debug only */ 
+  z-index: 99;
+  position: absolute;
+  width: 100%;
+  margin: 0px auto;
+  padding: 120px 0px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-template-rows: 
+
+}
+
+ header {
+    background: var(--dark-bg);
+    grid-column: 2 / span 5;
+    font-size: 2.5rem;
+    padding: 2rem;
+    margin-bottom: var(--spacing);
+  }
+
+ section {
+    grid-column: 2 / 8;
+    border: 5px solid green;  /* for debug only */ 
+    padding: 1rem;
+    background: var(--dark-bg);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing);
+  }
+
+#section1 {
+  border: 5px solid yellow;  /* for debug only */ 
+  grid-column-start: as specified
+  grid-column-end: as specified
+}
+
+section
+{
+    display: table;
+    max-width: 960px;
+    margin: 10px 10px 0px 10px;
+    padding:0px 15px 0px 15px;
+    color:rgb(60,60,60);
+    background-color:rgb(185,185,185);
+}
+a:link 
+{
+    color: #1b52aa;
+}
+a:visited 
+{
+    color: #1b52aa;
+}
+a:active 
+{
+    color: #1b52aa;
+} 
+canvas
+{
+    image-rendering: crisp-edges;
+}
+div.colorpicker
+{
+    position: relative; 
+    height: 300px; 
+    width: 320px
+}
+svg.colorpicker
+{
+    position: absolute; 
+    left: 0; 
+    pointer-events: none;
+}
+canvas.colorpicker_square
+{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+canvas.colorpicker_slider
+{
+    position: absolute;
+    left: 287px;
+    top: 10px;
+}
+td
+{
+    padding: 0px 15px 0px 0px;
+}
+div.swatch
+{
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+}
+label
+{
+    text-align: center;
+    display:inline-block;
+    width:12px;
+}
+input
+{
+    border: 1px solid rgba(0,0,0,0.333);
+    border-radius: 4px;
+    text-align: right; 
+    font-family: monospace;
+    color:rgb(30,30,30);
+    background-color: rgba(255,255,255,0.5);
+}
+.hex_input
+{
+    width: 65px;
+}
+.value_input
+{
+    width: 56px; 
+}
+
+.flex-container {
+    border: 5px solid green;  /* for debug only */ 
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex-item
+{
+    border: 2px solid blue; /* for debug only */
+    border-radius: 1vw;
+    padding: 5px 5px 5px 5px;
+    flex: 1 0 auto;
+}
+
+@media (max-width: 800px) 
+{
+    .flex-container 
+    {
+        flex-direction: column;
+    }
+}

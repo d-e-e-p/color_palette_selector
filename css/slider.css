@@ -1,0 +1,20 @@
+
+
+#slider-mesh-toggle {
+    height: 20px;
+    width: 50px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+#slider-mesh-toggle.off .noUi-handle {
+    border-color: red;
+}
+
+#slider-mesh-toggle.on  .noUi-handle {
+    border-color: green;
+}
+
+
+
+

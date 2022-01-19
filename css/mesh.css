@@ -1,0 +1,46 @@
+
+model-viewer#mesh {
+  min-width: 600px;
+  min-height: 400px;
+  width: 100%;
+  height: 100%;
+  background-color: #101010;
+  /* should specify initial width/height here? */
+ }
+
+
+  /* hotspot buttons */
+
+  button{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    --min-hotspot-opacity: 0;
+  }
+
+  /*
+  button[slot="hotspot-r"]{ background-color: red; }
+  button[slot="hotspot-g"]{ background-color: green; }
+  button[slot="hotspot-b"]{ background-color: blue; }
+  */
+
+  #annotation-r{ color: red;    background-color: transparent; }
+  #annotation-g{ color: green;  background-color: transparent; }
+  #annotation-b{ color: blue;   background-color: transparent; }
+
+  #annotation{
+    background-color: transparent;
+    position: absolute;
+    transform: translate(10px, 10px);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  /* This keeps child nodes hidden while the element loads */
+  :not(:defined) > * {
+    display: none;
+  }
