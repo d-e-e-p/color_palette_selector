@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/overlay.css">
+</head>
+<body>
+
+<h2>Overlay</h2>
+
+<div class="container">
+    <p>
+    <!-- Rounded switch -->
+    check this box to make the step1 hint go away
+    <div>
+      <input type="checkbox" id="step1" name="step1" unchecked>
+      <label for="step1">Step 1 Complete</label>
+    </div>
+
+    </p>
+
+  <div class="middle" id=middle1>
+    <div class="text">
+        step1:
+        It is much easier to suggest solutions when you know nothing about the problem.
+    </div>
+  </div>
+</div>
+  
+<div class="container">
+    <p>
+    <img src=https://webkit.org/demos/srcset/image-src.png>
+    </p>
+
+    <div>
+      <input type="checkbox" id="step2" name="step2" unchecked>
+      <label for="step2">Step 2 Complete</label>
+    </div>
+
+  <div class="middle" id=middle2>
+    <div class="text">
+        step2:
+        	"I think they're going to take all this money that we spend now on war
+and death --"
+	"And make them spend it on life."
+		-- Edith Keeler and Kirk, "The City on the Edge of Forever",
+		   stardate unknown.
+    </div>
+  </div>
+</div>
+  
+</body>
+
+<script>
+var checkbox1 = document.querySelector("input[name=step1]");
+checkbox1.addEventListener('change', function() {
+  if (this.checked) {
+    console.log("Checkbox1 is checked..");
+    d = document.getElementById("middle1")
+    // remove from parent
+    d.parentNode.removeChild(d);
+  } else {
+    console.log("Checkbox1 is not checked..");
+  }
+    });
+
+var checkbox2 = document.querySelector("input[name=step2]");
+checkbox2.addEventListener('change', function() {
+  if (this.checked) {
+    console.log("Checkbox2 is checked..");
+    d = document.getElementById("middle2")
+    // remove from parent
+    d.parentNode.removeChild(d);
+  } else {
+    console.log("Checkbox2 is not checked..");
+  }
+    });
+
+</script>
+
+
+</html>
+
+
+
