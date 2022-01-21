@@ -15,6 +15,21 @@
     border-color: green;
 }
 
+#slider-results-toggle {
+    height: 20px;
+    width: 50px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+#slider-results-toggle.off .noUi-handle {
+    border-color: red;
+}
+
+#slider-results-toggle.on  .noUi-handle {
+    border-color: green;
+}
+
 
 
 

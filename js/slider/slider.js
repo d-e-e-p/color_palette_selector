@@ -87,9 +87,9 @@ range.style.top = '10%';
 range.style.width = '20px';
 range.style.margin = '20px';
 
-var toggleSlider = document.getElementById('slider-mesh-toggle');
+var toggleSlider1 = document.getElementById('slider-mesh-toggle');
 
-noUiSlider.create(toggleSlider, {
+noUiSlider.create(toggleSlider1, {
     orientation: "horizontal",
     start: 0,
     range: {
@@ -104,16 +104,48 @@ noUiSlider.create(toggleSlider, {
 });
 
 
-toggleSlider.noUiSlider.on('update', function (values, handle) {
+toggleSlider1.noUiSlider.on('update', function (values, handle) {
     console.log("toggle handle = " + handle + ' values: ' + values)
     if (values[handle] > 0) {
-        toggleSlider.classList.add('on');
-        toggleSlider.classList.remove('off');
+        toggleSlider1.classList.add('on');
+        toggleSlider1.classList.remove('off');
     } else {
-        toggleSlider.classList.add('off');
-        toggleSlider.classList.remove('on');
+        toggleSlider1.classList.add('off');
+        toggleSlider1.classList.remove('on');
     }
 });
+
+var toggleSlider2 = document.getElementById('slider-results-toggle');
+
+noUiSlider.create(toggleSlider2, {
+    orientation: "horizontal",
+    start: 1,
+    range: {
+        'min': [0, 1],
+        'max': 1
+    },
+    /*
+    format: wNumb({
+        decimals: 0
+    })
+    */
+});
+
+
+toggleSlider2.noUiSlider.on('update', function (values, handle) {
+    console.log("toggle handle = " + handle + ' values: ' + values)
+    if (values[handle] > 0) {
+        document.getElementsByName('sortby')[0].setAttribute('content','lightness')
+        toggleSlider2.classList.add('on');
+        toggleSlider2.classList.remove('off');
+    } else {
+        document.getElementsByName('sortby')[0].setAttribute('content','hue')
+        toggleSlider2.classList.add('off');
+        toggleSlider2.classList.remove('on');
+    }
+    update_images.update_text();
+});
+
 
 //toggleSlider.style.height = '20px';
 //toggleSlider.style.margin = '0 auto 30px';

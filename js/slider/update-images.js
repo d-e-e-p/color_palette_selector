@@ -32,14 +32,15 @@ export class UpdateImages {
    get_image_filename_from_range_and_num() { 
 
        // TODO: check color-scheme is valid before using it directly for filename
-       let color_scheme = document.getElementsByName('color-scheme')[0].getAttribute('content')
+       let color_theme = document.getElementsByName('color-theme')[0].getAttribute('content')
        let range_from  = window.range_from;
        let range_to    = window.range_to;
        let num_colors  = window.num_colors;
 
        // construct pathname like assets/res/images_50_to_60/dark/img5.png 
        //let filename = `${this.path}/images_${this.range_from}_to_${this.range_to}/${color_scheme}/img${this.num_colors}.png`;
-       let filename = `${this.path}/images_${range_from}_to_${range_to}/${color_scheme}/img${num_colors}.png`;
+       // eg res/images/plot/dark/plot_0_to_10_n8.png
+       let filename = `${this.path}/images/plot/${color_theme}/plot_${range_from}_to_${range_to}_n${num_colors}.png`
        
        return filename;
     }
@@ -74,12 +75,14 @@ export class UpdateImages {
        let range_from  = window.range_from;
        let range_to    = window.range_to;
        let num_colors  = window.num_colors;
-       let color_scheme = document.getElementsByName('color-scheme')[0].getAttribute('content')
-       if (color_scheme == 'undefined') {
+       let color_theme = document.getElementsByName('color-theme')[0].getAttribute('content')
+       let sortby      = document.getElementsByName('sortby')[0].getAttribute('content')
+       if (color_theme == 'undefined') {
             return null;
         }
 
-       let filename = `${this.path}/html/${color_scheme}/res_lightness_${range_from}_to_${range_to}_ncolors_${num_colors}.html`;
+       // res/html/swatch/dark/lightness/res_lightness_0_to_10_ncolors_1.html
+       let filename = `${this.path}/html/swatch/${color_theme}/${sortby}/res_lightness_${range_from}_to_${range_to}_ncolors_${num_colors}.html`;
        
        return filename;
     }

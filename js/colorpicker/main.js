@@ -221,26 +221,31 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 display_results_okhsl(render_okhsl(r,g,b));
             }
 
-            //TODO: find better balance point
-            function get_fg_color_from_lightness (lightness) {
+            //TODO: find better balance point than 50
+            function get_color_theme_from_lightness (lightness) {
                 if (lightness < 50) {
-                    return "black"
+                    return "dark"
                 } else {
-                    return "white"
+                    return "light"
                 }
             }
 
             function callback_on_bg_change(rgbhex, lightness) {
 
-                var fg_color = get_fg_color_from_lightness(lightness);
+                var color_theme = get_color_theme_from_lightness(lightness);
+                var fg_color = "white";
+                if (color_theme == "light") {
+                    fg_color = "black";
+                }
 
-                console.log(`setting background to ${rgbhex} lightness to ${lightness} fg to ${fg_color}`)
+                console.log(`setting background to ${rgbhex} lightness to ${lightness} fg to ${color_theme}`)
 
                 window.colorpicker_bg_color = rgbhex;
                 window.colorpicker_bg_lightness = lightness;
 
                 // needs to be always light for embed to work -- sigh
                 document.getElementsByName('color-scheme')[0].setAttribute('content','light');
+                document.getElementsByName('color-theme')[0].setAttribute('content', color_theme)
                 // alternative is to set window.frames[0].document.body.style.background
                 /*
                 if (lightness < 50) {
@@ -261,7 +266,8 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 if (typeof range.noUiSlider !== 'undefined') {
                     //console.log(`lightness=${lightness}`);
                     //console.log(range.noUiSlider);
-                    
+                   
+
                     range.style.borderColor = fg_color;
 
                     range.noUiSlider.updateOptions({
