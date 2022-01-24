@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
   <link rel="stylesheet" href="css/slider.css">
   <link rel="stylesheet" href="css/mesh.css">
+  <link rel="stylesheet" href="css/tooltip.css">
 
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="light">
   <meta name="color-scheme" content="light"> 
@@ -45,14 +46,22 @@
 <div style="border-style: outset;" class="flex-container">
 
 
-    <section class=bg_select>
+    <section class="bg_select">
     <br>
-    
+ 
         <h2 class="free">Background Color</h2>
 
         <div class="colorpicker">
-            <canvas class="colorpicker_square" id="okhsl_hs_canvas" width="257" height="257"></canvas>
-            <canvas class="colorpicker_slider" id="okhsl_l_canvas" width="31" height="257"></canvas>
+            <div class="tooltip">
+            <canvas class="colorpicker_square" id="okhsl_hs_canvas" width="257" height="257">
+            </canvas>
+        <span class="tooltiptext">Tooltip text1</span>
+            </div>
+            <div class="tooltip">
+            <canvas class="colorpicker_slider" id="okhsl_l_canvas" width="31" height="257">
+            </canvas>
+        <span class="tooltiptext">Tooltip text2</span>
+            </div>
 
             <svg class="colorpicker" width="326" height="276">
                 

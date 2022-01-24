@@ -1,0 +1,39 @@
+/* from https://www.w3schools.com/css/css_tooltip.asp */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top:  50%;
+    right: -50%;
+    margin-left: 60px;
+}
+
+/* arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    right: 100%; 
+    top: 25%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: red green black blue;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+
