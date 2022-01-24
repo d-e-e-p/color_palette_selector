@@ -223,7 +223,8 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
 
             //TODO: find better balance point than 50
             function get_color_theme_from_lightness (lightness) {
-                if (lightness < 50) {
+                var light_dark_threshold = 60
+                if (lightness < light_dark_threshold) {
                     return "dark"
                 } else {
                     return "light"

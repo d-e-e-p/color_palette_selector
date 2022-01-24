@@ -115,36 +115,6 @@ toggleSlider1.noUiSlider.on('update', function (values, handle) {
     }
 });
 
-var toggleSlider2 = document.getElementById('slider-results-toggle');
-
-noUiSlider.create(toggleSlider2, {
-    orientation: "horizontal",
-    start: 1,
-    range: {
-        'min': [0, 1],
-        'max': 1
-    },
-    /*
-    format: wNumb({
-        decimals: 0
-    })
-    */
-});
-
-
-toggleSlider2.noUiSlider.on('update', function (values, handle) {
-    console.log("toggle handle = " + handle + ' values: ' + values)
-    if (values[handle] > 0) {
-        document.getElementsByName('sortby')[0].setAttribute('content','lightness')
-        toggleSlider2.classList.add('on');
-        toggleSlider2.classList.remove('off');
-    } else {
-        document.getElementsByName('sortby')[0].setAttribute('content','hue')
-        toggleSlider2.classList.add('off');
-        toggleSlider2.classList.remove('on');
-    }
-    update_images.update_text();
-});
 
 
 //toggleSlider.style.height = '20px';
