@@ -244,6 +244,10 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 window.colorpicker_bg_color = rgbhex;
                 window.colorpicker_bg_lightness = lightness;
 
+                // header
+                var url = `assets/images/flow3_for_${color_theme}.svg`;
+                document.getElementById('image-usage').src = url;
+
                 // needs to be always light for embed to work -- sigh
                 document.getElementsByName('color-scheme')[0].setAttribute('content','light');
                 document.getElementsByName('color-theme')[0].setAttribute('content', color_theme)
@@ -290,7 +294,9 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
             //document.getElementById('swatch').style.backgroundColor = rgbstr;
             let hsl = rgb_to_hsluv(r,g,b);
             var lightness = Math.round(hsl[2] * 100);
+
             callback_on_bg_change(rgbhex, lightness);
+
 
         }
 

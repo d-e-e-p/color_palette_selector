@@ -45,6 +45,20 @@ export class UpdateImages {
        return filename;
     }
 
+    /* from  https://stackoverflow.com/questions/32144399/is-there-a-native-javascript-equivalent-to-jquery-load */
+    load(id, url) {
+        var target = document.getElementById(id);
+        var r = new XMLHttpRequest();
+        r.open("GET", url, true);
+        r.onreadystatechange = function () {
+        console.log(`load target=${target} url=${url} r=${r}`);
+        if (r.readyState != 4 || r.status != 200) return;
+            target.innerHTML = r.responseText;
+        };
+        r.send();
+    }
+
+
     /*
      *  load html side file
      */
@@ -64,6 +78,8 @@ export class UpdateImages {
       if (this.table.src != url) {
         console.log(`${this.table.src} updated from ${url} to ${filename}`);
         this.table.src = filename;
+        // alternative to frame is using something like jquery load
+        //this.load("results-txt2",url);
         console.log(`table updated to ${filename}`);
       }
 
