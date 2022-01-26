@@ -16,6 +16,7 @@
   <link rel="apple-touch-icon" href="assets/images/icon.png">
   <!-- Place favicon.ico in the root directory -->
 
+  <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/flex.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="css/h5bp.css">
@@ -26,6 +27,8 @@
   <link rel="stylesheet" href="css/mesh.css">
   <link rel="stylesheet" href="css/introjs-modern.css">
   <link rel="stylesheet" href="css/sticky2.css">
+  <link rel="stylesheet" href="css/iconic.css">
+  <link rel="stylesheet" href="css/menu.css">
 
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="light">
   <meta name="color-scheme" content="light"> 
@@ -45,13 +48,22 @@
   <body onload="initialize_color_picker();">
 
 <div class="top-container">
-    <img alt="usage flow"  id=image-usage class="image-usage" src="assets/images/flow3_for_light.svg" style="width: 100%;  height: 100%; ">
+    <img alt="usage flow"  id=image-usage class="image-usage" src="assets/images/flow3_for_light.svg" style="width: 100%;  height: 100%;  ">
 </div>
 
-<div class="header topnav" id="myHeader">
+<div class="header topnav" id="menu">
+    <!--
   <a class="active" href="#home">Home</a>
-  <a href="javascript:startIntro();">Tour</a>
+  <a href="javascript:startIntro();">Help</a>
   <a href="pages/backstory.html">Backstory</a>
+    -->
+        <ul class="menu">
+            <li><a href="#"><span class="iconic home"></span> Home</a></li>
+            <li><a href="javascript:startIntro();"><span class="iconic chat"></span> Help</a></li>
+            <li><a href="pages/backstory.html"><span class="iconic image"></span> Back Story</a></li>
+        </ul>
+        <div class="clearfix"></div>
+
 </div>
 
 

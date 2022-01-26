@@ -22,7 +22,7 @@ function startIntro(){
         {
           element: "#hex_input",
           position: 'auto',
-          intro: "You can also directly enter an rgb hex color here to set the background"
+          intro: "You can also directly enter rgb hex to set the background color"
         },
         {
           element: '#slider-mesh-oneside',

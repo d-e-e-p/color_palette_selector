@@ -45,17 +45,21 @@ section > img {
     max-height: 100vh;
 }
 
+/* bg picker */
 .flex-item:nth-child(1) {
     }
 
+/* range picker */
 .flex-item:nth-child(2) {
     border: 2px solid red;  /* for debug only */
      flex-grow:1;
     }
 
+/* plot */
 .flex-item:nth-child(3) {
     }
 
+/* swatch */
 .flex-item:nth-child(3) {
     }
 

@@ -231,12 +231,20 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 }
             }
 
+            const setTheme = theme => document.documentElement.className = theme;
+
+
             function callback_on_bg_change(rgbhex, lightness) {
 
                 var color_theme = get_color_theme_from_lightness(lightness);
                 var fg_color = "white";
                 if (color_theme == "light") {
                     fg_color = "black";
+                } 
+                if (color_theme == "light") {
+                    document.documentElement.classList.remove('dark');
+                } else {
+                    document.documentElement.classList.add('dark');
                 }
 
                 console.log(`setting background to ${rgbhex} lightness to ${lightness} fg to ${color_theme}`)
@@ -248,7 +256,8 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 var url = `assets/images/flow3_for_${color_theme}.svg`;
                 document.getElementById('image-usage').src = url;
 
-                // needs to be always light for embed to work -- sigh
+                // needs to be always light for embed to work with transparent -- sigh
+                // TODO: move away from iframe or figure out how to get color-scheme to work...
                 document.getElementsByName('color-scheme')[0].setAttribute('content','light');
                 document.getElementsByName('color-theme')[0].setAttribute('content', color_theme)
                 // alternative is to set window.frames[0].document.body.style.background
