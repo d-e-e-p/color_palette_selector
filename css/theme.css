@@ -32,9 +32,14 @@
   --a-active  : #01afaf; 
 
   /* top nav */
+  /*
   --topnav-bg: #333;
   --header-bg: #555;
   --header-fg: #f1f1f1;
+  */
+  --topnav-bg: #333; 
+  --header-bg: blue;
+  --header-fg: #fff;
   
   --topnav-a-link-fg    : white; 
   --topnav-a-visited-fg : white; 
@@ -43,7 +48,7 @@
 
   --topnav-a-link-bg    : transparent; 
   --topnav-a-visited-bg : transparent; 
-  --topnav-a-hover-bg   : #ff9e9e; 
+  --topnav-a-hover-bg   : rgba(255,255,255,0.7);
   --topnav-a-active-bg  : #ffafaf; 
   
 }
@@ -71,14 +76,15 @@
   --header-bg: #aaa;
   --header-fg: #f1f1f1;
 
-  --topnav-a-link-fg    : black; 
-  --topnav-a-visited-fg : black; 
-  --topnav-a-hover-fg   : white; 
-  --topnav-a-active-fg  : white; 
+  --topnav-a-link-fg    : #444; 
+  --topnav-a-visited-fg : #444; 
+  --topnav-a-hover-fg   : #444; 
+  --topnav-a-active-fg  : #444; 
 
   --topnav-a-link-bg    : transparent; 
   --topnav-a-visited-bg : transparent; 
-  --topnav-a-hover-bg   : red; 
+  --topnav-a-hover-bg   : rgba(255,255,255,0.7);
+  --topnav-a-hover-bg-shadow   : rgba(0,0,0,0.4);
   --topnav-a-active-bg  : blue; 
 
 }

@@ -128,8 +128,11 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 let hsl = to_hsl(r,g,b);
                 let hsl_a = 0.5 + 0.5*hsl[1]*Math.cos(hsl[0]*2*Math.PI);
                 let hsl_b = 0.5 + 0.5*hsl[1]*Math.sin(hsl[0]*2*Math.PI);
-                document.getElementById(prefix + '_hs_manipulator').transform.baseVal.getItem(0).setTranslate(picker_size*hsl_a,picker_size*(1-hsl_b));
-                document.getElementById(prefix + '_l_manipulator').transform.baseVal.getItem(0).setTranslate(0,picker_size*(1-hsl[2]));
+                //console.log(`r=${r} g=${g} b=${b} so hsl_a = ${hsl_a} hsl_b=${hsl_b}`);
+                //let xoffset = 400 - 257 - 10;
+                let xoffset = 120;
+                document.getElementById(prefix + '_hs_manipulator').transform.baseVal.getItem(0).setTranslate(xoffset + picker_size*hsl_a,picker_size*(1-hsl_b));
+                //document.getElementById(prefix + '_l_manipulator').transform.baseVal.getItem(0).setTranslate(0,picker_size*(1-hsl[2]));
                 
                 /*
                 document.getElementById(prefix + '_hl_manipulator').transform.baseVal.getItem(0).setTranslate(picker_size*hsl[0],picker_size*(1-hsl[2]));
@@ -259,7 +262,7 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 // needs to be always light for embed to work with transparent -- sigh
                 // TODO: move away from iframe or figure out how to get color-scheme to work...
                 document.getElementsByName('color-scheme')[0].setAttribute('content','light');
-                document.getElementsByName('color-theme')[0].setAttribute('content', color_theme)
+                document.getElementsByName('color-theme')[0].setAttribute('content', color_theme);
                 // alternative is to set window.frames[0].document.body.style.background
                 /*
                 if (lightness < 50) {
@@ -488,6 +491,7 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                     b = rgb[2];
                 });
 
+                /*
                 setup_handler(document.getElementById(prefix + '_l_canvas'), function(x, y) 
                 {
                     let l = clamp(1 - y/picker_size);
@@ -498,7 +502,6 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                     g = rgb[1];
                     b = rgb[2];
                 });
-                /*
 
                 setup_handler(document.getElementById(prefix + '_hl_canvas'), function(x, y) 
                 {
@@ -838,6 +841,32 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 update_url();  
             }, false);
 
+            console.log(`rgb1 = ${r} ${g} ${b}`);
+            var slider_colorpicker = document.getElementById('slider-colorpicker');
+            slider_colorpicker.noUiSlider.on('update', function (values, handle) {
+                //console.log("handle = " + handle + ' values = ' + values);
+                l = values[0];
+
+                let hsl = srgb_to_okhsl(r,g,b);
+                //console.log(`l = ${l} so hsl=${hsl}`);
+                rgb = okhsl_to_srgb(hsl[0], hsl[1], l / 100.0);
+                //console.log(`rgb = ${rgb}`);
+                r = rgb[0];
+                g = rgb[1];
+                b = rgb[2];
+                //console.log(`BEFORE rgb = ${r} ${g} ${b}`);
+                // r,g,b =0 breaks to_hsl function so need short circuit
+                var min_value = 0.0001;
+                if (r  < min_value) { r = min_value ;}
+                if (g  < min_value) { g = min_value ;}
+                if (b  < min_value) { b = min_value ;}
+                //console.log(`AFTER rgb = ${r} ${g} ${b}`);
+
+                update();
+                update_url();  
+            });
+
+
             let results = render_static();
                                        
             //update_canvas('hsv_h_canvas', results["hsv_h"]);
@@ -850,7 +879,7 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
             //update_canvas('hsluv_l_canvas', results["hsluv_l"]);
             //update_canvas('hsluv_h_canvas', results["hsluv_h"]);
 
-            update_canvas('okhsl_l_canvas', results["okhsl_l"]);
+            //update_canvas('okhsl_l_canvas', results["okhsl_l"]);
             //update_canvas('okhsl_h_canvas', results["okhsl_h"]);
 
 

@@ -48,7 +48,7 @@ nav {
 }
 
 .menu li a {
-	color: #444;
+	color: var(--topnav-a-link-fg);
 	display: block;
 	font-size: 14px;
 	line-height: 20px;
@@ -86,7 +86,7 @@ nav {
 
 /* Displays the dropdown on hover and moves back into position */
 .menu li:hover ul {
-	background: rgba(255,255,255,0.7);
+	background: var(--topnav-a-hover-bg);
 	border-radius: 0 0 6px 6px;
 	box-shadow: inset 0px 2px 4px rgba(0,0,0,0.4);
 	left: 5px;

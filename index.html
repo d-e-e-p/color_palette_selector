@@ -78,12 +78,15 @@
         <h2 class="free">Background Color</h2>
 
         <div class="colorpicker">
+            <div id="slider-colorpicker"></div>
             <canvas class="colorpicker_square" id="okhsl_hs_canvas" width="257" height="257">
             </canvas>
+            <!--
             <canvas class="colorpicker_slider" id="okhsl_l_canvas" width="31" height="257">
             </canvas>
+            -->
 
-            <svg class="colorpicker" width="326" height="276">
+            <svg class="colorpicker" width="400px" height="300px">
                 
                 <g transform="translate(10,10)">
                     <g id="okhsl_hs_manipulator" transform="translate(0,0)">
@@ -91,12 +94,14 @@
                         <circle cx="0" cy="0" r="6" fill="none" stroke-width="1.25" stroke="#000000" ></circle>
                     </g>
                 </g>
+                <!--
                 <g transform="translate(287,10)">
                     <g id="okhsl_l_manipulator" transform="translate(0,0)">
                         <polygon points="-8,-4 -1,0 -8,4" fill="#ffffff" stroke-width="0.8" stroke="#000000"></polygon>
                         <polygon points="38,-4 31,0 38,4" fill="#ffffff" stroke-width="0.8" stroke="#000000"></polygon>
                     </g>
                 </g>
+                -->
             </svg>
         </div> 
 

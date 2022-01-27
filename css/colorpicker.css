@@ -8,7 +8,7 @@ div.colorpicker
 {
     position: relative; 
     height: 300px; 
-    width: 320px
+    width: 400px;
 }
 svg.colorpicker
 {
@@ -19,8 +19,16 @@ svg.colorpicker
 canvas.colorpicker_square
 {
     position: absolute;
-    left: 10px;
+    width: 257px;
+    height: 257px;
+    right: 10px;
     top: 10px;
+}
+div#slider-colorpicker
+{
+    position: absolute;
+    left: 40px;
+    bottom: 10px;
 }
 canvas.colorpicker_slider
 {
