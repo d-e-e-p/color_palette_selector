@@ -42,6 +42,7 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
         1000
         );
 
+        window.last_index = 0;
         let [r,g,b] = random_bg_color();
         console.log(`random bg r=${r} g=${g} b=${b}`)
 
@@ -205,11 +206,11 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
             update_hsl_manipulators("okhsl", srgb_to_okhsl);
             //update_hsl_manipulators("hsluv", rgb_to_hsluv);
             
-            update_hsl_inputs("hsl", rgb_to_hsl);
-            update_hsl_inputs("okhsl", srgb_to_okhsl);
-            update_rgb_inputs([r,g,b]);
+            //update_hsl_inputs("hsl", rgb_to_hsl);
+            //update_hsl_inputs("okhsl", srgb_to_okhsl);
+            //update_rgb_inputs([r,g,b]);
             
-            update_hsl_manipulators("okhsl", srgb_to_okhsl);
+            //update_hsl_manipulators("okhsl", srgb_to_okhsl);
 
             if (async)
             {
@@ -256,7 +257,7 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 window.colorpicker_bg_lightness = lightness;
 
                 // header
-                var url = `assets/images/flow3_for_${color_theme}.svg`;
+                var url = `assets/images/flow4_for_${color_theme}.png`;
                 document.getElementById('image-usage').src = url;
 
                 // needs to be always light for embed to work with transparent -- sigh
@@ -284,17 +285,16 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                     //console.log(`lightness=${lightness}`);
                     //console.log(range.noUiSlider);
                    
+                    //TODO: in CSS
+                    //range.style.borderColor = fg_color;
+                    var subs = range.querySelectorAll('.noUi-marker')
+                    
+                    var index = Math.ceil(lightness/10);
+                    subs[window.last_index].innerHTML = "";
+                    //subs[index].innerHTML = ` bg L=${lightness}`;
+                    subs[index].innerHTML = "<h1>⌦</h1>";
+                    window.last_index = index;
 
-                    range.style.borderColor = fg_color;
-
-                    range.noUiSlider.updateOptions({
-                           pips: {
-                                mode: 'values',
-                                values: [0,lightness,100],
-                                density: 10,
-                                stepped: true
-                            }
-                    });
                 }
 
 
@@ -822,10 +822,10 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
             setup_hsl_handlers_canvas("okhsl", srgb_to_okhsl, okhsl_to_srgb);
             //setup_hsl_handlers_canvas("hsluv", rgb_to_hsluv, hsluv_to_rgb);
             //
-            setup_hsl_handlers_input("hsl", rgb_to_hsl, hsl_to_rgb);
-            setup_hsl_handlers_input("okhsl", srgb_to_okhsl, okhsl_to_srgb);
+            //setup_hsl_handlers_input("hsl", rgb_to_hsl, hsl_to_rgb);
+            //setup_hsl_handlers_input("okhsl", srgb_to_okhsl, okhsl_to_srgb);
             // TODO: get rgb input working
-            setup_rgb_handlers_input([r,g,b]);
+            //setup_rgb_handlers_input([r,g,b]);
             //setup_hsl_handlers_input("hsluv", rgb_to_hsluv, hsluv_to_rgb);
 
             document.getElementById('hex_input').addEventListener('change', (event) => {

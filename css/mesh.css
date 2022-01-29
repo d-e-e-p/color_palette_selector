@@ -8,6 +8,11 @@ model-viewer#mesh {
   /* should specify initial width/height here? */
  }
 
+model-viewer#mesh h3 {
+  font-size: 20px;
+  margin-top: 5px;
+  text-align: center;
+} 
 
   /* hotspot buttons */
 

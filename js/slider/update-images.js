@@ -10,6 +10,7 @@ export class UpdateImages {
     this.path = "/assets/res";
     this.image = document.getElementsByClassName("image-plot")[0];
     this.table = document.getElementsByClassName("results-txt")[0];
+    this.last_url = "";
     /* use window. method instead 
     this.range_from = 0;
     this.range_to = 100;
@@ -36,6 +37,11 @@ export class UpdateImages {
        let range_from  = window.range_from;
        let range_to    = window.range_to;
        let num_colors  = window.num_colors;
+
+       if (num_colors == null) {
+           return null;
+       }
+       console.log(`get_image_filename_from_range_and_num: num_colors = ${num_colors}`);
 
        // construct pathname like assets/res/images_50_to_60/dark/img5.png 
        //let filename = `${this.path}/images_${this.range_from}_to_${this.range_to}/${color_scheme}/img${this.num_colors}.png`;
@@ -64,6 +70,9 @@ export class UpdateImages {
      */
 
     update_text() {
+
+      // update title of mesh
+      document.getElementById("selected_color_range").innerHTML = `Selected Color Range: L=${window.range_from} to ${window.range_to}`; 
       
       //
       //TODO: use the URL() UI
@@ -73,14 +82,15 @@ export class UpdateImages {
       if (filename == null) {
           return;
       }
+      console.log(`update_text: filename not null =  ${filename} `);
 
       var url = window.location.protocol + "//" + window.location.host + filename 
-      if (this.table.src != url) {
-        console.log(`${this.table.src} updated from ${url} to ${filename}`);
-        this.table.src = filename;
-        // alternative to frame is using something like jquery load
-        //this.load("results-txt2",url);
-        console.log(`table updated to ${filename}`);
+      if (this.last_url != url) {
+        this.last_url = url;
+        console.log(`${this.last_url} updated to ${url} `);
+        // using iframe or using something like jquery's load
+        //this.table.src = filename;
+        this.load("results-txt2",url);
       }
 
     }
@@ -96,12 +106,55 @@ export class UpdateImages {
        if (color_theme == 'undefined') {
             return null;
         }
+       if (num_colors == null) {
+           return null;
+       }
 
-       // res/html/swatch/dark/lightness/res_lightness_0_to_10_ncolors_1.html
-       let filename = `${this.path}/html/swatch/${color_theme}/${sortby}/res_lightness_${range_from}_to_${range_to}_ncolors_${num_colors}.html`;
+       // res/html/swatch/saturation/res_lightness_90_to_120_ncolors_25.html
+       let filename = `${this.path}/html/swatch/${sortby}/res_lightness_${range_from}_to_${range_to}_n${num_colors}.html`;
        
        return filename;
     }
+
+   get_json_filename_from_range_and_sortby() { 
+
+       // TODO: check color-scheme is valid before using it directly for filename
+       let range_from  = window.range_from;
+       let range_to    = window.range_to;
+       let num_colors  = window.num_colors;
+       let color_theme = document.getElementsByName('color-theme')[0].getAttribute('content');
+       let sortby      = document.getElementsByName('sortby')[0].getAttribute('content');
+       if (color_theme == 'undefined') {
+            return null;
+        }
+       if (num_colors == null) {
+           return null;
+       }
+
+       // res/html/json/dark/lightness/res_lightness_0_to_10.html
+       let filename = `${this.path}/html/json/${color_theme}/${sortby}/res_lightness_${range_from}_to_${range_to}.html`;
+       
+       return filename;
+    }
+
+    update_json_link() {
+    
+      //var s = document.getElementById("sortby");
+      var filename = this.get_json_filename_from_range_and_sortby();
+      if (filename == null) {
+          return;
+      }
+
+      //var url = window.location.protocol + "//" + window.location.host + filename 
+      if (this.last_json_link != filename) {
+        this.last_json_link = filename;
+        console.log(`${this.last_json_link} updated to ${filename} `);
+        var link = document.getElementById("json_link"); 
+        link.setAttribute('href', filename);
+      }
+
+    }
+
 
 
   }

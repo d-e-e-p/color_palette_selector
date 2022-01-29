@@ -4,20 +4,26 @@
 //
 // see https://refreshless.com/nouislider/more/
 //  to destroy and  recreate with 2 ranges
+//  to get all prop : document.querySelectorAll("[class*=noUi-]")
 
 
 //import noUiSlider from 'https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js';
 import { UpdateGraphs } from './update-graph.js';
 import { UpdateImages } from './update-images.js';
-import { UpdateLinks  } from './update-links.js';
+//import { UpdateLinks  } from './update-links.js';
 var update_graphs = new UpdateGraphs();
 var update_images = new UpdateImages();
-var update_links  = new UpdateLinks();
+//var update_links  = new UpdateLinks();
+
 
 
 // 0-100 slider
 
 var range = document.getElementById('slider-mesh-oneside');
+
+function format_range(value) {
+    return value;
+}
 
 noUiSlider.create(range, {
     orientation: "vertical",
@@ -37,7 +43,7 @@ noUiSlider.create(range, {
         format: {
         // 'to' the formatted value. Receives a number.
         to: function (value) {
-            return Math.round(value*100)/100;
+            return format_range(value);
         },
         // 'from' the formatted value.
         // Receives a string, should return a number.
@@ -57,10 +63,9 @@ noUiSlider.create(range, {
     */
 
     pips: {
-        mode: 'values',
-        values: [0,50,100],
-        density: 10,
-        stepped: true
+        mode: 'steps',
+        stepped: true,
+        density: 10
     }
 
 });
@@ -69,12 +74,18 @@ noUiSlider.create(range, {
 //range.style.margin = '0 auto 30px';
 //range.style.height = '20px';
 //range.style.margin = '10%';
+/*
 range.style.height = '80%';
 range.style.width = '20px';
 range.style.position = 'absolute';
 range.style.right = '40px';
 range.style.top = '10%';
 range.style.margin = '20px';
+*/
+// change color of middle section
+var connect = range.querySelectorAll('.noUi-connect');
+connect[0].style.background = "linear-gradient(green, red, blue)";
+
 
 // bg colorpicker slider
 
@@ -98,7 +109,8 @@ noUiSlider.create(colorpicker, {
         format: {
         // 'to' the formatted value. Receives a number.
         to: function (value) {
-            return Math.round(value*100)/100;
+            //return Math.round(value*100)/100;
+            return value;
         },
         // 'from' the formatted value.
         // Receives a string, should return a number.
@@ -119,9 +131,9 @@ noUiSlider.create(colorpicker, {
 
 
 // create connection elements see https://refreshless.com/nouislider/examples/
-// .noUi-connect { .noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle .noUi-target.noUi-horizontal .noUi-tooltip 
+// .noUi-connect { .noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle .noUi-target .noUi-horizontal .noUi-tooltip 
 
-colorpicker.style.background = "linear-gradient(white, black)"
+//colorpicker.style.background = "linear-gradient(white, black)"
 //var connect_cp = colorpicker.querySelectorAll('.noUi-connect');
 //connect_cp[0].style.background = "linear-gradient(white, black)"
 // use connect[0].classList.add("classname") to change in css
@@ -138,38 +150,6 @@ colorpicker.style.margin = '20px';
 
 // -----------------------------------------------------------------------------------------
 
-var toggleSlider1 = document.getElementById('slider-mesh-toggle');
-
-noUiSlider.create(toggleSlider1, {
-    orientation: "horizontal",
-    start: 0,
-    range: {
-        'min': [0, 1],
-        'max': 1
-    },
-    /*
-    format: wNumb({
-        decimals: 0
-    })
-    */
-});
-
-
-toggleSlider1.noUiSlider.on('update', function (values, handle) {
-    console.log("toggle handle = " + handle + ' values: ' + values)
-    if (values[handle] > 0) {
-        toggleSlider1.classList.add('on');
-        toggleSlider1.classList.remove('off');
-    } else {
-        toggleSlider1.classList.add('off');
-        toggleSlider1.classList.remove('on');
-    }
-});
-
-
-
-//toggleSlider.style.height = '20px';
-//toggleSlider.style.margin = '0 auto 30px';
 
 
 // image viewer
@@ -232,6 +212,7 @@ range.noUiSlider.on('update', function (values, handle) {
     //update_links.update_link();
     update_images.update_image();
     update_images.update_text();
+    update_images.update_json_link();
 });
 
 viewer.noUiSlider.on('update', function (values, handle) {
@@ -241,3 +222,12 @@ viewer.noUiSlider.on('update', function (values, handle) {
     update_images.update_image();
     update_images.update_text();
 });
+
+// update on sortby change
+document.getElementsByName('sortby')[0].onchange = function() {
+    console.log(`sortby updating change...`);
+    update_images.update_text();
+    update_images.update_json_link();
+}
+
+

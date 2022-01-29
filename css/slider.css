@@ -30,6 +30,79 @@
     border-color: green;
 }
 
+#range-color {
+    background: linear-gradient(white, black);
+}
+#slider-colorpicker .noUi-base {
+    background: linear-gradient(white, black);
+}
+#slider-colorpicker .noUi-marker {
+    color: black;
+    background-color: black;
+}
+#slider-colorpicker .noUi-value {
+    color: black;
+}
+
+#slider-image-viewer {
+
+    width: 80%;
+
+}
+#slider-mesh-oneside {
+    height: 70%;
+    width: 20px;
+    left: 50px;
+    bottom: 0%;
+    /*
+    position: relative;
+    */
+    border-color: var(--text)
+}
+
+#slider-mesh-oneside h1 {
+    font-size: 40px;
+    margin: 0 0 0 0;
+    line-height: 0;
+    transform: translate(-70px, 10px);
+}
+
+#slider-mesh-oneside .noUi-base {
+    background: linear-gradient(white, black);
+}
+
+.noUi-handle {
+    color: black;
+    background-color: white;
+}
+
+/* needs to be reversed */
+.noUi-marker {
+    background-color: var(--text);
+}
+
+
+.noUi-pips {
+    color: var(--text);
+}
+
+.noUi-value {
+    color: var(--text);
+
+}
+
+.noUi-target {
+    background-color: linear-gradient(white, black);
+}
+
+
+
+/*
+.noUi-target.noUi-horizontal .noUi-tooltip {
+    color: red;
+    background-color: purple;
+}
+*/
 
 
 

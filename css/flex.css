@@ -11,7 +11,7 @@
     flex-wrap: wrap;
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
-    justify-content: space-around;
+    justify-content: space-evenly;
     -webkit-align-content: flex-start;
     -ms-flex-line-pack: start;
     align-content: flex-start;
@@ -20,39 +20,44 @@
     align-items: stretch;
     }
 
-.iframe {
-  width: calc(100vw);
-  height: calc(100vh);
-  box-sizing: border-box;
-  }
-
 section {
-    border: 2px solid green;  /* for debug only */
-    border-radius: 1vw;       /* for debug only */
+    border-radius: 1vw;       
     -webkit-order: 0;
     -ms-flex-order: 0;
     order: 0;
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
     -webkit-align-self: auto;
     -ms-flex-item-align: auto;
     align-self: auto;
+    max-width:  100vw;
+    max-height: 100vh;
 } 
 
 section > img {
-    max-width:  100vw;
-    max-height: 100vh;
 }
 
 /* bg picker */
 .flex-item:nth-child(1) {
+  border: 2px solid green;  
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 1;
     }
 
 /* range picker */
 .flex-item:nth-child(2) {
-    border: 2px solid red;  /* for debug only */
-     flex-grow:1;
+  border: 2px solid red;  
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 2;
     }
 
 /* plot */

@@ -17,7 +17,11 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/flex.css">
+  <!-- 
+  <link rel="stylesheet" href="css/flex.css"> 
+  <link rel="stylesheet" href="css/grid.css"> 
+  -->
+  <link rel="stylesheet" href="css/grid.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="css/h5bp.css">
   <link rel="stylesheet" href="css/colorpicker.css">
@@ -29,6 +33,7 @@
   <link rel="stylesheet" href="css/sticky2.css">
   <link rel="stylesheet" href="css/iconic.css">
   <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/results.css">
 
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="light">
   <meta name="color-scheme" content="light"> 
@@ -48,7 +53,7 @@
   <body onload="initialize_color_picker();">
 
 <div class="top-container">
-    <img alt="usage flow"  id=image-usage class="image-usage" src="assets/images/flow3_for_light.svg" style="width: 100%;  height: 100%;  ">
+    <img alt="usage flow"  id=image-usage class="image-usage" src="assets/images/flow4_for_light.png" style="width: 100%;  height: 100%;  ">
 </div>
 
 <div class="header topnav" id="menu">
@@ -72,10 +77,14 @@
 <div style="border-style: outset;" class="flex-container">
 
 
-    <section class="bg_select">
+    <section class="bg_select tl">
     <br>
  
-        <h2 class="free">Background Color</h2>
+      <table class="bg_table" border=0>
+          <caption>Background Color: <input type="text" id="hex_input" maxlength="7" placeholder="#101010" class="hex_input"></input>
+          <caption>
+          <tr>
+              <td>
 
         <div class="colorpicker">
             <div id="slider-colorpicker"></div>
@@ -104,33 +113,8 @@
                 -->
             </svg>
         </div> 
-
-        <br>
-          <table border=0>
-      <caption>
-        <input type="text" id="hex_input" maxlength="7" placeholder="#101010" class="hex_input"></input>
-      </caption>
-      <tr>
-          <th>HSL</th> <th>OKHSL</th> <th>RGB</th> 
-      </tr>
-      <tr>
-        <td><label>H</label> <input type="number" id="hsl_h_input"   min="0" max="360" maxlength="3" class="value_input"></input></td>
-        <td><label>H</label> <input type="number" id="okhsl_h_input" min="0" max="360" maxlength="3" class="value_input"></input></td>
-        <td><label>R</label> <input type="number" id="rgb_r_input"   min="0" max="255" maxlength="3" class="value_input"></input></td>
-      </tr>
-
-      <tr>
-        <td><label>S</label> <input type="number" id="hsl_s_input" min="0" max="100" maxlength="3" class="value_input"></input></td>
-        <td><label>S</label> <input type="number" id="okhsl_s_input" min="0" max="100" maxlength="3" class="value_input"></input></td>
-        <td><label>G</label> <input type="number" id="rgb_g_input" min="0" max="255" maxlength="3" class="value_input"></input></td>
-      </tr>
-
-      <tr>
-        <td><label>L</label> <input type="number" id="hsl_l_input" min="0" max="100" maxlength="3" class="value_input"></input></td>
-        <td><label>L</label> <input type="number" id="okhsl_l_input" min="0" max="100" maxlength="3" class="value_input"></input></td>
-        <td><label>B</label> <input type="number" id="rgb_b_input" min="0" max="255" maxlength="3" class="value_input"></input></td>
-      </tr>
-
+         </td>
+         </tr>
     </table>
 
     </section>
@@ -139,7 +123,7 @@
 
 <!--  mesh -->
 
-    <section class=lightness_select>
+    <section class="lightness_select tr">
 <model-viewer id="mesh" src="assets/models/rgb.glb" 
    ar ar-modes="webxr scene-viewer quick-look" 
    disable-zoom 
@@ -148,7 +132,7 @@
    auto-rotate auto-rotate-delay=10000 rotation-per-second="2deg"
    background-color="#101010"  
    alt="rgb"  style="border-style: outset;">
-
+    <h3 id="selected_color_range">Selected Color Range: L=0 to 100</h3>
 <button class="Hotspot" slot="hotspot-r" data-position="1m 0m 0m" data-normal="1m 1m 1m" data-visibility-attribute="visible">
     <div id="annotation-r" class="HotspotAnnotation">RED</div>
 </button>
@@ -160,36 +144,34 @@
 </button>
 
 <div id="slider-mesh-oneside"></div>
-<div id="slider-mesh-toggle"></div>
 </model-viewer>
     </section>
 
 
 
-    <section class=number_select>
+    <section class="number_select bl">
 <div id=image-viewer class=image-viewer>
     <img alt=plot_example_image  id=image-plot class="image-plot" src="/assets/res/images/plot/dark/plot_30_to_100_n5.png" style="width: 100%;  height: 100%; ">
+    <center>
     <div id="slider-image-viewer"></div>
+    </center>
 </div>
     </section>
 
 
-    <section class=results>
-    <br>
-    <div>
-    <iframe id=results-txt class=results-txt src="assets/res/html/swatch/dark/lightness/res_lightness_30_to_50_ncolors_5.html" style="width: 100vw; height: 100vh; background-color:transparent">
-    </iframe>    
-</div>
-    <br>
-    </section>
-
-    <section class=results2>
+    <section class="results br">
     <br>
     <p id="results-txt2">
+    <select name="sortby" id="sortby" ></select>
     </p>
     <br>
     </section>
 
+<section class="json">
+    <h2><center>
+<a id="json_link" href='' target="_blank">View results in json format</a>
+        </center></h2>
+</section>
 
 </div> 
 
@@ -201,6 +183,7 @@
   <script type="module" src="js/slider/slider.js"></script>
   <script src="js/captions.js"></script>
   <script src="js/sticky2.js"></script>
+  <script src="js/update_sortby.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <!-- 
@@ -211,6 +194,8 @@
   <script src="https://www.google-analytics.com/analytics.js" async></script>
   -->
       </main>
+
+
 </body>
 
 </html>

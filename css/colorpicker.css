@@ -1,5 +1,10 @@
 
 
+.bg_select h2 {
+    text-align: center;
+    width: 100%;
+}
+
 canvas
 {
     image-rendering: crisp-edges;
@@ -36,23 +41,20 @@ canvas.colorpicker_slider
     left: 287px;
     top: 10px;
 }
-td
-{
-    padding: 0px 15px 0px 0px;
-}
 div.swatch
 {
     width: 64px;
     height: 64px;
     display: inline-block;
 }
-label
+div.colorpicker label
 {
     text-align: center;
     display:inline-block;
     width:12px;
 }
-input
+/* TODO make these colors swap on dark/light switch */
+div.colorpicker input
 {
     border: 1px solid rgba(0,0,0,0.333);
     border-radius: 4px;
@@ -61,14 +63,34 @@ input
     color:rgb(30,30,30);
     background-color: rgba(255,255,255,0.5);
 }
-/* 1.15rem * 7 > */
+/*  7 * 25 = 225 */
 .hex_input
 {
-    width: 5rem;
+    width: 110px;
+    text-align: center; 
 }
 .value_input
 {
     width: 56px; 
+    text-align: right; 
 }
 
+table.bg_table {
+    width: 400px;
+    text-align: center; 
+    font-family: monospace;
+    color:rgb(30,50,30);
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 5px;
+}
 
+table.bg_table caption {
+    background-color: rgba(255,255,255,0.5);
+    padding: 20px 10px 10px 10px;
+    font-weight: bold;
+    font-size: 25px;
+}
+table.bg_table td
+{
+    padding: 10px 10px 10px 10px;
+}
