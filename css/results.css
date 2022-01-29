@@ -1,0 +1,92 @@
+/*
+ * result swatches
+ *
+ */
+
+
+div.label_and_box { 
+    width: 90%; font-family: monospace; margin: 1%;
+}
+div.label_and_box h1 { 
+    font-size: 3vw; float: none; text-align: center; margin: 1%; 
+}
+div.label_and_box h2 { 
+    font-size: 2vw; float: none; text-align: center; margin: 1%; 
+}
+
+div.label_and_box select {
+    display:inline-block;
+    font-size: 2vw;  font-family: monospace; font-weight: bold;
+    border: 3px solid var(--border);
+    padding: 4px;
+    outline: 0;
+    border-radius: 3px;
+}
+
+div.label_and_box label {
+    font-size: 2vw;  font-family: monospace; font-weight: bold;
+}
+
+
+
+body {
+    margin: 0;
+}
+
+.everything {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: none;
+  border-radius: 1vw;
+  padding: 1vw;
+}
+
+.newline {
+  position: relative;
+  float: right;
+  text-align: center;
+}
+
+.label_and_box {
+  display: flex;
+  border: 1vw solid var(--border);
+  border-radius: 1vw;
+  border-width: 1vw;
+  padding: 1vw;
+  margin: 1vw;
+  flex-direction: column;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 1vw;
+  width: 16.4vw;
+  font-size: 2vw;
+  font-weight: bold;
+  text-align: center;
+  padding: 1vw;
+  height: 5em;
+
+  background-color: transparent;
+}
+
+.box sup { font-size: 1vw; display: block; text-align: right; vertical-align: top;
+    transform: translateX(-50%);
+    transform: translateY(50%);
+    font-weight: bold;
+}
+.box sub { font-size: 1vw; display: block; text-align: center; vertical-align: bottom;
+    transform: translateX(0%);
+    transform: translateY(50%);
+    font-weight: bold;
+}
+
+
+
