@@ -1,23 +1,39 @@
 
 /* gen using https://grid.layoutit.com/ */
 
-main {  
-  width: 98vw;
-  height: 98vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-auto-rows: 1fr;
-  gap: 1vw 1vh;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "tl tl tr tr tr tr"
-    "bl bl bl br br br";
-  border: 1vw solid red;
+main {
+   width: 98vw;
+   height: 98vh;
+   display: grid;
+   /*
+   grid-template-columns: minmax(400px,1fr) repeat(2, minmax(300px,1fr)) minmax(400px,1fr);
+   grid-template-rows: minmax(400px, 1fr) 1fr
+   grid-column-gap: 0px;
+   grid-row-gap: 0px;
+   */
 }
 
+.colorpicker {
+    width: 400;
+    height: 350;
+    background-color: red;
+}
+
+#mesh {
+    width: 600;
+    width: 400;
+    background-color: blue;
+}
+
+
+.tl { grid-area: 1 / 1 / 2 / 2; }
+.tm { grid-area: 1 / 2 / 2 / 4; }
+.tr { grid-area: 1 / 4 / 2 / 5; }
+.bl { grid-area: 2 / 1 / 3 / 3; }
+.br { grid-area: 2 / 3 / 3 / 5; }
+
 section {
-  border: 1vw solid blue;
+  border: 1px solid blue;
   object-fit: fill;
   /*
   width: 100%;
@@ -25,17 +41,33 @@ section {
   */
 }
 
+@media (min-width: 1000px) {
+    main {
+       grid-template-columns: minmax(400px,1fr) repeat(2, minmax(300px,1fr)) 
+       grid-template-rows: minmax(400px, 1fr) 1fr 
+    }
 
-.tl { grid-area: tl; }
-.tr { grid-area: tr; }
-.bl { grid-area: bl; }
-.br { grid-area: br; }
+    .tl { grid-area: 1 / 1 / 2 / 2; }
+    .tm { grid-area: 1 / 2 / 2 / 4; }
+    .tr { grid-area: 2 / 1 / 3 / 2; }
+    .bl { grid-area: 2 / 2 / 3 / 3; }
+    .br { grid-area: 2 / 3 / 3 / 4; }
 
-/*
-  width: calc(25vw);
- *
- */
+}
 
+/* 7 * 4 */
+@media (min-width: 1400px) {
+    main {
+       grid-template-columns: minmax(400px,1fr) repeat(2, minmax(300px,1fr)) minmax(400px,1fr);
+       grid-template-rows: minmax(400px, 1fr) 1fr
+    }
 
+    .tl { grid-area: 1 / 1 / 2 / 2; }
+    .tm { grid-area: 1 / 2 / 2 / 4; }
+    .tr { grid-area: 1 / 4 / 2 / 5; }
+    .bl { grid-area: 2 / 1 / 3 / 3; }
+    .br { grid-area: 2 / 3 / 3 / 5; }
+
+}
 
 

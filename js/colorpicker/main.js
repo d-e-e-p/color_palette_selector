@@ -131,7 +131,7 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 let hsl_b = 0.5 + 0.5*hsl[1]*Math.sin(hsl[0]*2*Math.PI);
                 //console.log(`r=${r} g=${g} b=${b} so hsl_a = ${hsl_a} hsl_b=${hsl_b}`);
                 //let xoffset = 400 - 257 - 10;
-                let xoffset = 120;
+                let xoffset = 75;
                 document.getElementById(prefix + '_hs_manipulator').transform.baseVal.getItem(0).setTranslate(xoffset + picker_size*hsl_a,picker_size*(1-hsl_b));
                 //document.getElementById(prefix + '_l_manipulator').transform.baseVal.getItem(0).setTranslate(0,picker_size*(1-hsl[2]));
                 
