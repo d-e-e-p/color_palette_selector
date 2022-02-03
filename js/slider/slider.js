@@ -15,6 +15,22 @@ var update_graphs = new UpdateGraphs();
 var update_images = new UpdateImages();
 //var update_links  = new UpdateLinks();
 
+// TODO: pick either light or dark
+function random_lightness() {
+    var difference =  30;
+    var black_min  =  10;
+    var white_max  = 100;
+    var random_diff = Math.round(Math.random() * difference);
+    var random_boolean = Math.random() < 0.5;
+
+    var l;
+    if (random_boolean) {
+        l =  black_min + random_diff ;
+    } else {
+        l = white_max - random_diff ;
+    }
+    return l
+}
 
 
 // 0-100 slider
@@ -90,11 +106,13 @@ connect[0].style.background = "linear-gradient(green, red, blue)";
 // bg colorpicker slider
 
 var colorpicker = document.getElementById('slider-colorpicker');
-
+var initial_lightness = random_lightness();
+window.colorpicker_bg_lightness = initial_lightness;
+console.log(`setting start of colorpicker lightness = ${window.colorpicker_bg_lightness}`);
 noUiSlider.create(colorpicker, {
     orientation: "vertical",
     direction: 'rtl',
-    start: 50,
+    start:  window.colorpicker_bg_lightness,
     connect: true,
     step: 1,
     range: {
@@ -184,20 +202,21 @@ noUiSlider.create(viewer, {
 
     // Show a scale with the slider
     pips: {
-        mode: 'steps',
-        stepped: true,
-        density: 10
-    },
+      mode: 'values',
+      values: [1, 5, 10, 15, 20, 25],
+      density: 5
+    }
 });
 
 
-
+/*
 viewer.style.height = '20px';
 viewer.style.position = 'relative';
 viewer.style.right = '0px';
 viewer.style.top = '80%';
 viewer.style.width = '80%';
 viewer.style.margin = '20px';
+*/
 
 
 // callbacks
