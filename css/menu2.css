@@ -1,0 +1,36 @@
+
+/* Style the header */
+.header {
+  padding: 1vw 1vh;
+  background-color: var(--text-light);
+  overflow: hidden;
+  background: var(--text-light);
+  color: var(--bg);
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  position: sticky; 
+  top: 0;
+}
+
+/* Page content */
+.content {
+  padding: 0;
+}
+
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  width: 16vw;
+  padding: 1vw 1vh;
+  text-decoration: none;
+  font-size: 2vw;
+}
+
+
+.topnav a.link    { color: var(--topnav-a-link-fg); }
+.topnav a.visited { color: var(--topnav-a-visited-fg); }
+.topnav a:hover   { color: var(--topnav-a-hover-fg);    background-color: var(--topnav-a-hover-bg); }
+.topnav a.active  { color: var(--topnav-a-active-fg);    background-color: var(--topnav-a-active-bg); }

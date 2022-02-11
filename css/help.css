@@ -1,0 +1,49 @@
+
+
+main {
+
+    /*
+    display: flex;
+    */
+    
+    justify-content: space-around; 
+    align-items: stretch; 
+    /* flex-flow: row wrap; */ 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    align-content: stretch;
+
+
+  }
+
+section {
+    border: 1px solid #ffcc80;
+    border-radius: 5px;
+    flex-shrink:1;
+    flex-grow:1;
+  }
+
+
+section.bg_select {
+    flex-shrink:0;
+    width: 300px;
+  }
+
+section.lightness_select {
+    flex-grow:2;
+  }
+
+section.number_select {
+    flex-grow:1;
+    flex-shrink: 1;
+    width: 300px;
+}
+	
+section.sortby_select {
+    flex-grow:1;
+    flex-shrink: 1;
+    width: 100%;
+}
+	
+			
+
