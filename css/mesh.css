@@ -1,7 +1,9 @@
 
 model-viewer#mesh {
-  min-width: 600px;
-  min-height: 400px;
+    /*
+  min-width: 400px;
+  */
+  min-height: 350px;
   width: 100%;
   height: 100%;
   background-color: #101010;
@@ -9,9 +11,10 @@ model-viewer#mesh {
  }
 
 model-viewer#mesh h3 {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: bold;
   margin-top: 5px;
-  text-align: center;
+  text-align: right;
 } 
 
   /* hotspot buttons */

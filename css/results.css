@@ -5,26 +5,28 @@
 
 
 div.label_and_box { 
-    width: 90%; font-family: monospace; margin: 1%;
+    width: 100%; font-family: monospace; margin: 0%;
+
 }
 div.label_and_box h1 { 
-    font-size: 3vw; float: none; text-align: center; margin: 1%; 
+    font-size: 30px; float: none; text-align: center; margin: 0%; 
 }
-div.label_and_box h2 { 
-    font-size: 2vw; float: none; text-align: center; margin: 1%; 
+div.label_and_box h3 { 
+    float: none; text-align: center; margin: 0%; 
+    font-size: 24px;  font-family: monospace; font-weight: bold;
 }
 
 div.label_and_box select {
     display:inline-block;
-    font-size: 2vw;  font-family: monospace; font-weight: bold;
-    border: 3px solid var(--border);
+    font-size: 24px;  font-family: monospace; font-weight: bold;
+    border: 1px solid var(--border);
     padding: 4px;
     outline: 0;
     border-radius: 3px;
 }
 
 div.label_and_box label {
-    font-size: 2vw;  font-family: monospace; font-weight: bold;
+    font-size: 24px;  font-family: monospace; font-weight: bold;
 }
 
 
@@ -46,6 +48,7 @@ body {
   border: none;
   border-radius: 1vw;
   padding: 1vw;
+  gap: 20px;
 }
 
 .newline {
@@ -56,33 +59,35 @@ body {
 
 .label_and_box {
   display: flex;
-  border: 1vw solid var(--border);
-  border-radius: 1vw;
-  border-width: 1vw;
-  padding: 1vw;
-  margin: 1vw;
+  border-color: var(--border);
+  border-radius: 1px;
+  border-width: 1px;
+  padding: 1px;
+  margin: 0;
   flex-direction: column;
 }
 
 .box {
+  flex-shrink:0;
+  flex-grow:1;
+  flex-basis: 0;
   border: 1px solid transparent;
-  border-radius: 1vw;
-  width: 16.4vw;
-  font-size: 2vw;
+  border-radius: 5px;
+  min-width: 150px;
+  font-size: 16px;
   font-weight: bold;
   text-align: center;
-  padding: 1vw;
-  height: 5em;
+  height: 100px;
 
   background-color: transparent;
 }
 
-.box sup { font-size: 1vw; display: block; text-align: right; vertical-align: top;
+.box sup { font-size: 12px; display: block; text-align: right; vertical-align: top;
     transform: translateX(-50%);
     transform: translateY(50%);
     font-weight: bold;
 }
-.box sub { font-size: 1vw; display: block; text-align: center; vertical-align: bottom;
+.box sub { font-size: 12px; display: block; text-align: center; vertical-align: bottom;
     transform: translateX(0%);
     transform: translateY(50%);
     font-weight: bold;

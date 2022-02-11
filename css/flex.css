@@ -10,6 +10,7 @@ main {
     flex-direction: row; 
     flex-wrap: wrap; 
     align-content: stretch;
+    align-items: stretch;
 
 
   }
@@ -19,29 +20,40 @@ section {
     border-radius: 5px;
     flex-shrink:1;
     flex-grow:1;
+
   }
 
 
 section.bg_select {
     flex-shrink:0;
-    width: 300px;
+    flex-grow:0;
+    width: 350px;
+    align-items: center;
+    justify-content: center;
   }
 
 section.lightness_select {
-    flex-grow:2;
-    width: 600px;
-    height: 400px;
+    flex-grow:3;
+    min-width: 300px;
   }
 
 section.number_select {
+    width: 100px;
     flex-grow:1;
-    flex-shrink: 1;
-    width: 300px;
 }
+
+section.number_select img{
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+}
+
 	
 section.sortby_select {
-    flex-grow:1;
-    flex-shrink: 1;
+    width: 100%;
+}
+	
+section.example_display {
     width: 100%;
 }
 	

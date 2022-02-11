@@ -12,74 +12,66 @@
   <meta property="og:url" content="">
   <meta property="og:image" content="">
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="assets/images/icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/images/icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="/css/theme.css">
   <!-- 
       one of these:
-  <link rel="stylesheet" href="css/flex.css"> 
-  <link rel="stylesheet" href="css/grid.css"> 
-  <link rel="stylesheet" href="css/tb-grid.css"> 
+  <link rel="stylesheet" href="/css/flex.css"> 
+  <link rel="stylesheet" href="/css/grid.css"> 
+  <link rel="stylesheet" href="/css/tb-grid.css"> 
   -->
-  <link rel="stylesheet" href="css/flex.css"> 
+  <link rel="stylesheet" href="/css/flex.css"> 
   
 
-  <link rel="stylesheet" href="css/h5bp.css">
-  <link rel="stylesheet" href="css/colorpicker.css">
+  <link rel="stylesheet" href="/css/h5bp.css">
+  <link rel="stylesheet" href="/css/colorpicker.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.3.0/introjs.min.css">
-  <link rel="stylesheet" href="css/slider.css">
-  <link rel="stylesheet" href="css/mesh.css">
-  <link rel="stylesheet" href="css/introjs-modern.css">
-  <link rel="stylesheet" href="css/sticky2.css">
-  <link rel="stylesheet" href="css/iconic.css">
-  <link rel="stylesheet" href="css/menu.css">
-  <link rel="stylesheet" href="css/results.css">
+  <link rel="stylesheet" href="/css/slider.css">
+  <link rel="stylesheet" href="/css/mesh.css">
+  <link rel="stylesheet" href="/css/introjs-modern.css">
+  <!--
+  <link rel="stylesheet" href="/css/sticky2.css">
+  -->
+  <link rel="stylesheet" href="/css/iconic.css">
+  <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/css/menu2.css">
+  <link rel="stylesheet" href="/css/results.css">
 
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="light">
   <meta name="color-scheme" content="light"> 
   <meta name="color-theme" content="dark"> 
   <meta name="sortby" content="lightness"> 
+  <meta name="num_colors" content="5"> 
 
   <!--  TODO: turn into modules -->
-  <script src="js/colorpicker/colorconversion.js"></script>
-  <script src="js/colorpicker/hsluv.js"></script>
-  <script src="js/colorpicker/constants.js"></script>
-  <script src="js/colorpicker/render.js"></script>
-  <script src="js/colorpicker/main.js"></script>
+  <script src="/js/colorpicker/colorconversion.js"></script>
+  <script src="/js/colorpicker/hsluv.js"></script>
+  <script src="/js/colorpicker/constants.js"></script>
+  <script src="/js/colorpicker/render.js"></script>
+  <script src="/js/colorpicker/main.js"></script>
 
 
 </head>
 
   <body onload="initialize_color_picker();">
 
-<div class="top-container">
-    <img alt="usage flow"  id=image-usage class="image-usage" src="assets/images/flow4_for_light.png" style="width: 100%;  height: 100%;  ">
-</div>
 
 <div class="header topnav" id="menu">
-    <!--
-  <a class="active" href="#home">Home</a>
-  <a href="javascript:startIntro();">Help</a>
-  <a href="pages/backstory.html">Backstory</a>
-    -->
         <ul class="menu">
             <li><a href="#"><span class="iconic home"></span> Home</a></li>
-            <li><a href="javascript:startIntro();"><span class="iconic chat"></span> Help</a></li>
+            <li><a href="pages/help.html"><span class="iconic chat"></span> Help</a></li>
             <li><a href="pages/backstory.html"><span class="iconic image"></span> Back Story</a></li>
+            <li><a id="json_link" href="" target="_blank"><span class="iconic arrow-bottom"></span> Results in Json</a></li>
         </ul>
         <div class="clearfix"></div>
-
 </div>
-
-
   <main>
 
-
    <section class="bg_select">
-    <br>
  
       <table class="bg_table" border=0>
           <caption>Background Color<br><input type="text" id="hex_input" maxlength="7" placeholder="#101010" class="hex_input"></input>
@@ -103,23 +95,23 @@
             </td>
          </tr>
     </table>
-
     </section>
 
 
 
 <!--  mesh -->
 
+
 <section class="lightness_select">
 <model-viewer id="mesh" src="assets/models/rgb.glb" 
    ar ar-modes="webxr scene-viewer quick-look" 
    disable-zoom 
    camera-controls 
-   interaction-prompt="when-focused" 
+        interaction-prompt="when-focused" 
    auto-rotate auto-rotate-delay=10000 rotation-per-second="2deg"
    background-color="#101010"  
-   alt="rgb"  style="border-style: outset;">
-    <h3 id="selected_color_range">Selected Color Range: L=0 to 100</h3>
+   alt="rgb" >
+    <h3 id="selected_color_range">Palette Color Range: L=0 to 100</h3>
 <button class="Hotspot" slot="hotspot-r" data-position="1m 0m 0m" data-normal="1m 1m 1m" data-visibility-attribute="visible">
     <div id="annotation-r" class="HotspotAnnotation">RED</div>
 </button>
@@ -134,16 +126,12 @@
 </model-viewer>
     </section>
 
-
-
     <section class="number_select">
-<div id=image-viewer class=image-viewer>
-    <img alt=plot_example_image  id=image-plot class="image-plot" src="/assets/res/images/plot/dark/plot_30_to_100_n5.png" style="width: 100%;  height: 100%; ">
-    <center>
-    <div id="slider-image-viewer"></div>
-    </center>
-</div>
+        <center>
+    <img alt=plot_delta_image  id=image-delta-plot class="image-plot" src="/assets/res/plots/delta/dark/plot_0_to_100_n5.png" style="max-height: 75vh; ">
+        </center>
     </section>
+
 
 
     <section class="sortby_select">
@@ -154,11 +142,12 @@
     <br>
     </section>
 
-<section class="json">
-    <h2><center>
-<a id="json_link" href='' target="_blank">View results in json format</a>
-        </center></h2>
-</section>
+
+    <section class="example_display">
+        <center>
+    <img alt=plot_examples_image  id=image-examples-plot class="image-plot" src="/assets/res/plots/examples/dark/plot_0_to_100_n5.png" style="max-height: 75vh; ">
+        </center>
+    </section>
 
       </main>
 
@@ -169,8 +158,16 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.3.0/intro.min.js"></script>
   <script type="module" src="js/slider/slider.js"></script>
   <script src="js/captions.js"></script>
+  <!--
   <script src="js/sticky2.js"></script>
+  -->
+
   <script src="js/update_sortby.js"></script>
+
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="js/help_data.js"></script>
+  <script src="js/help2.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <!-- 

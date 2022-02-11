@@ -170,53 +170,6 @@ colorpicker.style.margin = '20px';
 
 
 
-// image viewer
-var viewer = document.getElementById('slider-image-viewer');
-
-noUiSlider.create(viewer, {
-    orientation: "horizontal",
-    direction: 'ltr',
-    start: 5,
-    connect: true,
-    step: 1,
-    range: {
-        'min': [1],
-        'max': [25]
-    },
-
-    // Move handle on tap, bars are draggable
-    behaviour: 'tap-drag',
-    tooltips: true,
-
-        format: {
-        // 'to' the formatted value. Receives a number.
-        to: function (value) {
-            return Math.round(value*100)/100;
-        },
-        // 'from' the formatted value.
-        // Receives a string, should return a number.
-        from: function (value) {
-            return Number(value);
-        }
-    },
-
-    // Show a scale with the slider
-    pips: {
-      mode: 'values',
-      values: [1, 5, 10, 15, 20, 25],
-      density: 5
-    }
-});
-
-
-/*
-viewer.style.height = '20px';
-viewer.style.position = 'relative';
-viewer.style.right = '0px';
-viewer.style.top = '80%';
-viewer.style.width = '80%';
-viewer.style.margin = '20px';
-*/
 
 
 // callbacks
@@ -234,13 +187,6 @@ range.noUiSlider.on('update', function (values, handle) {
     update_images.update_json_link();
 });
 
-viewer.noUiSlider.on('update', function (values, handle) {
-    //console.log("handle = " + handle + ' values' + values);
-    window.num_colors = values[0];
-
-    update_images.update_image();
-    update_images.update_text();
-});
 
 // update on sortby change
 document.getElementsByName('sortby')[0].onchange = function() {
@@ -248,5 +194,21 @@ document.getElementsByName('sortby')[0].onchange = function() {
     update_images.update_text();
     update_images.update_json_link();
 }
+
+// update on num colors change
+document.getElementsByName('num_colors')[0].onchange = function() {
+    console.log(`num_colors updating change...`);
+    update_images.update_image();
+    update_images.update_text();
+    update_images.update_json_link();
+}
+
+// update on theme change
+document.getElementsByName('color-theme')[0].onchange = function() {
+    console.log(`color-theme updating change...`);
+    update_images.update_image();
+}
+
+
 
 

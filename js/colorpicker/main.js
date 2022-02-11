@@ -45,6 +45,8 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
         window.last_index = 0;
         let [r,g,b] = random_bg_color();
         console.log(`random bg r=${r} g=${g} b=${b}`)
+        let current_color_theme = "";
+
 
         /* copy site address to bg color */
 
@@ -238,42 +240,37 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
             const setTheme = theme => document.documentElement.className = theme;
 
 
-            function callback_on_bg_change(rgbhex, lightness) {
-
-                var color_theme = get_color_theme_from_lightness(lightness);
-                var fg_color = "white";
-                if (color_theme == "light") {
-                    fg_color = "black";
-                } 
+            function callback_on_theme_change(color_theme) {
                 if (color_theme == "light") {
                     document.documentElement.classList.remove('dark');
                 } else {
                     document.documentElement.classList.add('dark');
                 }
+                // needs to be always light for embed to work with transparent -- sigh
+                // TODO: move away from iframe or figure out how to get color-scheme to work...
+                //document.getElementsByName('color-scheme')[0].setAttribute('content','light');
+                //document.getElementsByName('color-theme')[0].setAttribute('content', color_theme);
+                update_color_theme(color_theme);
+
+            }
+
+            function callback_on_bg_change(rgbhex, lightness) {
+
+                // check last value and only change is color_theme is updated
+                var color_theme = get_color_theme_from_lightness(lightness);
+                if (color_theme != current_color_theme) {
+                    callback_on_theme_change(color_theme);
+                    current_color_theme = color_theme;
+                }
 
                 console.log(`setting background to ${rgbhex} lightness to ${lightness} fg to ${color_theme}`)
-
                 window.colorpicker_bg_color = rgbhex;
                 window.colorpicker_bg_lightness = lightness;
 
                 // header
-                var url = `assets/images/flow4_for_${color_theme}.png`;
-                document.getElementById('image-usage').src = url;
+                //var url = `assets/images/flow4_for_${color_theme}.png`;
+                //document.getElementById('image-usage').src = url;
 
-                // needs to be always light for embed to work with transparent -- sigh
-                // TODO: move away from iframe or figure out how to get color-scheme to work...
-                document.getElementsByName('color-scheme')[0].setAttribute('content','light');
-                document.getElementsByName('color-theme')[0].setAttribute('content', color_theme);
-                // alternative is to set window.frames[0].document.body.style.background
-                /*
-                if (lightness < 50) {
-                    document.getElementsByName('color-scheme')[0].setAttribute('content','light');
-                } else {
-                    document.getElementsByName('color-scheme')[0].setAttribute('content','light');
-                }
-                */
-                //let color_scheme = document.getElementsByName('color-scheme')[0].getAttribute('content');
-                //console.log(`lightness = ${lightness} color-scheme= ${color_scheme}`)
 
                 document.getElementById('mesh').style.backgroundColor = rgbhex;
                 document.getElementById('hex_input').value = rgbhex;
@@ -841,10 +838,11 @@ const GA_ID = document.documentElement.getAttribute("ga-id");
                 update_url();  
             }, false);
 
-            console.log(`rgb1 = ${r} ${g} ${b}`);
+            console.log(`rgb = ${r} ${g} ${b}`);
             var slider_colorpicker = document.getElementById('slider-colorpicker');
             slider_colorpicker.noUiSlider.on('update', function (values, handle) {
-                //console.log("handle = " + handle + ' values = ' + values);
+                console.log("handle = " + handle + ' values = ' + values);
+
                 l = values[0];
 
                 let hsl = srgb_to_okhsl(r,g,b);

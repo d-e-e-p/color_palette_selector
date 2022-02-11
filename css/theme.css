@@ -126,10 +126,6 @@ header p {
 }
 */
 
-/* Add a little padding to ensure spacing is correct between content and nav */
-main {
-  padding-top: 1.5rem;
-}
 
 footer {
   margin-top: 4rem;
@@ -420,12 +416,13 @@ mark {
   background: var(--marked);
 }
 
+/*
 main img,
 main video {
   max-width: 100%;
   height: auto;
-  border-radius: 5px;
 }
+*/
 
 figure {
   margin: 0;

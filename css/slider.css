@@ -45,8 +45,18 @@
 }
 
 #slider-image-viewer {
+    /*
+viewer.style.height = '20px';
+viewer.style.position = 'relative';
+viewer.style.right = '0px';
+viewer.style.top = '80%';
+viewer.style.width = '80%';
+viewer.style.margin = '20px';
+*/
 
+    height: 20px;
     width: 80%;
+    bottom: 40px;
 
 }
 #slider-mesh-oneside {

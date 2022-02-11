@@ -8,13 +8,13 @@ export class UpdateImages {
    */
   constructor () {
     this.path = "/assets/res";
-    this.image = document.getElementsByClassName("image-plot")[0];
-    this.table = document.getElementsByClassName("results-txt")[0];
+    this.image_delta_plot = document.getElementById("image-delta-plot");
+    this.image_examples_plot = document.getElementById("image-examples-plot");
     this.last_url = "";
+    // TODO: put range along with sortby and num_colors in meta
     /* use window. method instead 
     this.range_from = 0;
     this.range_to = 100;
-    this.num_colors = 5;
     */
   }
 
@@ -23,32 +23,32 @@ export class UpdateImages {
    * update visible elements of graph based on slider
    */
   update_image () {
-      var filename = this.get_image_filename_from_range_and_num();
-      this.image.src = filename;
+      var filenames = this.get_image_filenames_from_range_and_num();
+      this.image_delta_plot.src = filenames[0];
+      this.image_examples_plot.src = filenames[1];
   }
 
   /** 
   * 
   */
-   get_image_filename_from_range_and_num() { 
+   get_image_filenames_from_range_and_num() { 
 
        // TODO: check color-scheme is valid before using it directly for filename
-       let color_theme = document.getElementsByName('color-theme')[0].getAttribute('content')
-       let range_from  = window.range_from;
-       let range_to    = window.range_to;
-       let num_colors  = window.num_colors;
+       var color_theme = document.getElementsByName('color-theme')[0].getAttribute('content')
+       var range_from  = window.range_from;
+       var range_to    = window.range_to;
+       var num_colors  = document.getElementsByName('num_colors')[0].getAttribute('content')
 
        if (num_colors == null) {
            return null;
        }
-       console.log(`get_image_filename_from_range_and_num: num_colors = ${num_colors}`);
 
-       // construct pathname like assets/res/images_50_to_60/dark/img5.png 
-       //let filename = `${this.path}/images_${this.range_from}_to_${this.range_to}/${color_scheme}/img${this.num_colors}.png`;
-       // eg res/images/plot/dark/plot_0_to_10_n8.png
-       let filename = `${this.path}/images/plot/${color_theme}/plot_${range_from}_to_${range_to}_n${num_colors}.png`
-       
-       return filename;
+       // eg /assets/res/plots/delta/dark/pl  ot_0_to_100_n5.png
+       var f_delta    = `${this.path}/plots/delta/${color_theme}/plot_${range_from}_to_${range_to}_n${num_colors}.png`;
+       var f_examples = `${this.path}/plots/examples/${color_theme}/plot_${range_from}_to_${range_to}_n${num_colors}.png`;
+       console.log(`updating to ${f_delta} and ${f_examples}`);
+      
+       return [f_delta, f_examples];
     }
 
     /* from  https://stackoverflow.com/questions/32144399/is-there-a-native-javascript-equivalent-to-jquery-load */
@@ -72,7 +72,7 @@ export class UpdateImages {
     update_text() {
 
       // update title of mesh
-      document.getElementById("selected_color_range").innerHTML = `Selected Color Range: L=${window.range_from} to ${window.range_to}`; 
+      document.getElementById("selected_color_range").innerHTML = `Palette Color Range: L=${window.range_from} to ${window.range_to}`; 
       
       //
       //TODO: use the URL() UI
@@ -100,9 +100,9 @@ export class UpdateImages {
        // TODO: check color-scheme is valid before using it directly for filename
        let range_from  = window.range_from;
        let range_to    = window.range_to;
-       let num_colors  = window.num_colors;
        let color_theme = document.getElementsByName('color-theme')[0].getAttribute('content')
        let sortby      = document.getElementsByName('sortby')[0].getAttribute('content')
+       let num_colors  = document.getElementsByName('num_colors')[0].getAttribute('content')
        if (color_theme == 'undefined') {
             return null;
         }
@@ -121,9 +121,9 @@ export class UpdateImages {
        // TODO: check color-scheme is valid before using it directly for filename
        let range_from  = window.range_from;
        let range_to    = window.range_to;
-       let num_colors  = window.num_colors;
        let color_theme = document.getElementsByName('color-theme')[0].getAttribute('content');
        let sortby      = document.getElementsByName('sortby')[0].getAttribute('content');
+       let num_colors  = document.getElementsByName('num_colors')[0].getAttribute('content')
        if (color_theme == 'undefined') {
             return null;
         }
